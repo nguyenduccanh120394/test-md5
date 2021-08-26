@@ -42,7 +42,9 @@ export class BookEditComponent implements OnInit {
     console.log(book)
     this.bookService.updateBook(id,book).subscribe(()=>{
       alert("Edit Success");
-      this.router.navigate(['/book']).then(location.reload);
+      this.router.navigate(['/book']).then(function(){
+        location.reload()
+      });
     })
   }
 }

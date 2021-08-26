@@ -18,9 +18,8 @@
         <span class="text-muted">{{book.title}}</span><br>
       </td>
       <td>
-        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button>
         <a  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['book/edit',book.id]"><i class="fa fa-edit"></i> </a>
-        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-info"></i> </button>
+        <a  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['book/delete',book.id]"><i class="fa fa-trash"></i> </a>
       </td>
     </tr>
     </tbody>
