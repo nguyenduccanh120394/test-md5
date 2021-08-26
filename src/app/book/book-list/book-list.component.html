@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Author</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Title</th>
+      <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let book of books index as i">
+      <td class="pl-4">{{i+1}}</td>
+      <td>
+        <span class="text-muted">{{book.author}}</span><br>
+      </td>
+      <td>
+        <span class="text-muted">{{book.title}}</span><br>
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button>
+        <a  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['book/edit',book.id]"><i class="fa fa-edit"></i> </a>
+        <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-info"></i> </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet></router-outlet>

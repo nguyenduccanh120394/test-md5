@@ -1,0 +1,22 @@
+<h1>Update</h1>
+<form *ngIf="bookForm" [formGroup]="bookForm" (ngSubmit)="update(id)">
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td><input type="text" formControlName="title" ></td>
+    </tr>
+    <tr>
+      <td>Author</td>
+      <td><input type="text" formControlName="author"></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><button>Update</button></td>
+    </tr>
+  </table>
+</form>
