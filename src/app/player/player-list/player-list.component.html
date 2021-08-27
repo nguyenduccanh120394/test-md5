@@ -1,1 +1,40 @@
-<p>player-list works!</p>
+<div class="row">
+  <div class="col-md-8">
+    <div class="table-responsive">
+      <br>
+      <table class="table table-striped table-hover" style="border-radius: 44px">
+        <thead>
+        <tr>
+          <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+          <th scope="col" class="border-0 text-uppercase font-medium">Id</th>
+          <th scope="col" class="border-0 text-uppercase font-medium">Name</th>
+          <th scope="col" class="border-0 text-uppercase font-medium">Champ</th>
+        </tr>
+        </thead>
+        <br>
+        <tbody>
+        <tr *ngFor="let player of players index as i">
+          <td class="pl-4">{{i+1}}</td>
+          <td>
+            <span class="text-muted">{{player.id}}</span><br>
+          </td>
+          <td>
+            <span class="text-muted">{{player.name}}</span><br>
+          </td>
+          <td>
+            <span class="text-muted">{{player.champ}}</span><br>
+          </td>
+
+          <td>
+            <a  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['player/edit',player.id]" ngbTooltip="Info"><i class="fa fa-info"></i> </a>
+            <a  class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" [routerLink]="['player/delete',player.id]" ngbTooltip="Delete"><i class="fa fa-trash"></i> </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4" style="background-color: #eae7e7; border-radius: 15px ; height: 750px">
+    <router-outlet></router-outlet>
+  </div>
+</div>

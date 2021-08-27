@@ -1,1 +1,33 @@
-<p>player-create works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><img src="https://image.flaticon.com/icons/png/128/2100/2100438.png"width="55" height="55"></h4>
+    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="playerForm" (ngSubmit)="create()">
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Champ</label>
+        <input type="text" formControlName="champ" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>KDA</label>
+        <input type="text" formControlName="kda" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+        <input type="text" formControlName="des" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!playerForm.valid" class="btn btn-success" (click)="modal.close('Save click')">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="open(content)"ngbTooltip="Add Player" style="border-radius: 44px; width: 90px"><i class="fa fa-plus-circle"></i></button>
+<pre>{{ closeResult }}</pre>

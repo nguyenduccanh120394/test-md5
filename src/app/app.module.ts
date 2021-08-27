@@ -12,6 +12,7 @@ import { PlayerListComponent } from './player/player-list/player-list.component'
 import { PlayerCreateComponent } from './player/player-create/player-create.component';
 import { PlayerEditComponent } from './player/player-edit/player-edit.component';
 import { PlayerDeleteComponent } from './player/player-delete/player-delete.component';
+import {PlayerModuleModule} from './player/player-module/player-module.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PlayerDeleteComponent } from './player/player-delete/player-delete.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BookModule
+    BookModule,
+    PlayerModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

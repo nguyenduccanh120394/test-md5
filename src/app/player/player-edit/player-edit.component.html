@@ -1,1 +1,50 @@
-<p>player-edit works!</p>
+<br>
+<ng-template #content let-modal xmlns="http://www.w3.org/1999/html">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><img src="https://image.flaticon.com/icons/png/512/2921/2921087.png" height="30" width="30">  Edit for {{playerForm.value.title}}</h4>
+    <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="playerForm" (ngSubmit)="update(id)">
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" >
+      </div>
+      <div class="mb-3">
+        <label>Champ</label>
+        <input type="text" formControlName="champ" class="form-control" >
+      </div>
+      <div class="mb-3">
+        <label>KDA</label>
+        <input type="text" formControlName="kda" class="form-control" >
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+        <input type="text" formControlName="des" class="form-control" >
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-info" (click)="modal.close('Save click')">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="open(content)" ngbTooltip="Edit" style="border-radius: 44px"><i class="fa fa-edit"></i></button>
+<pre>{{ closeResult }}</pre>
+<div class="form-group">
+  <label style="padding: 20px 20px 10px "><b>Name</b></label>
+  <input type="text" class="form-control" formControlName="name" readonly="readonly" value="{{playerForm.value.name}}" style="border: none">
+</div>
+<div class="form-group">
+  <label style="padding: 20px 20px 10px "><b>Champ</b></label>
+  <input type="text" class="form-control" formControlName="champ" readonly="readonly" value="{{playerForm.value.champ}}" style="border: none">
+</div>
+<div class="form-group">
+  <label style="padding: 20px 20px 10px "><b>KDA</b></label>
+  <input type="text" class="form-control" formControlName="kda" readonly="readonly" value="{{playerForm.value.kda}}" style="border: none">
+</div>
+<div class="form-group">
+  <label style="padding: 20px 20px 10px "><b>Description</b></label>
+  <input type="text" class="form-control" formControlName="description" readonly="readonly" value="{{playerForm.value.description}}" style="border: none">
+</div>

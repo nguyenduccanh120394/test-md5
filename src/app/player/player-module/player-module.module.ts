@@ -7,6 +7,7 @@ import {PlayerCreateComponent} from '../player-create/player-create.component';
 import {PlayerEditComponent} from '../player-edit/player-edit.component';
 import {PlayerDeleteComponent} from '../player-delete/player-delete.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -16,10 +17,15 @@ import {HttpClientModule} from '@angular/common/http';
     PlayerEditComponent,
     PlayerDeleteComponent
   ],
+  exports: [
+    PlayerListComponent,
+    PlayerCreateComponent
+  ],
   imports: [
     CommonModule,
     PlayerModuleRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class PlayerModuleModule { }

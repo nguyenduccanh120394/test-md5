@@ -1,1 +1,21 @@
-<p>player-delete works!</p>
+<br>
+<form *ngIf="playerForm" [formGroup]="playerForm" (ngSubmit)="delete(id)">
+  <div class="form-group">
+    <label style="padding: 20px 20px 10px "><b>Name:</b></label>
+    <input type="text" class="form-control" formControlName="name" readonly="readonly" value="{{playerForm.value.name}}" style="border: none">
+  </div>
+  <div class="form-group">
+    <label style="padding: 20px 20px 10px "><b>Champ</b></label>
+    <input type="text" class="form-control" formControlName="champ" readonly="readonly" value="{{playerForm.value.champ}}" style="border: none">
+  </div>
+  <div class="form-group">
+    <label style="padding: 20px 20px 10px "><b>KDA</b></label>
+    <input type="text" class="form-control" formControlName="kda" readonly="readonly" value="{{playerForm.value.kda}}" style="border: none">
+  </div>
+  <div class="form-group">
+    <label style="padding: 20px 20px 10px "><b>Description</b></label>
+    <input type="text" class="form-control" formControlName="description" readonly="readonly" value="{{playerForm.value.description}}" style="border: none">
+  </div>
+  <br>
+  <button class="btn btn-primary" style="margin-left: 40%"><i class="fa fa-trash"> Delete</i></button>
+</form>
