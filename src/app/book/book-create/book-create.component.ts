@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BookService} from '../../service/book.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class BookCreateComponent implements OnInit {
     author: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
   });
-  constructor(private modalService: NgbModal ,private bookService: BookService) { }
+  constructor(private modalService: NgbModal ,private bookService: BookService, private router: Router ) { }
 
   ngOnInit(): void {
   }
@@ -29,11 +30,11 @@ export class BookCreateComponent implements OnInit {
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
+      return '';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return '';
     } else {
-      return `with: ${reason}`;
+      return '';
     }
   }
 
@@ -45,9 +46,10 @@ export class BookCreateComponent implements OnInit {
       description: this.bookForm.value.description,
     }
     this.bookService.saveBook(book).subscribe(()=>{
-      // @ts-ignore
-      document.getElementById('modal-basic-title').innerHTML ='Create Success!!'
-      location.reload()
+      alert("Create Success")
+      this.router.navigate(['/book']).then(function(){
+        location.reload()
+      })
     }, error => {console.log(error)})
   }
 }

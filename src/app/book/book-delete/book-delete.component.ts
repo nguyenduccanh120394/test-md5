@@ -34,7 +34,9 @@ export class BookDeleteComponent implements OnInit {
   }
   delete(id: number){
     this.bookService.deleteBook(id).subscribe(() =>{
-      alert("Delete Success")
+      this.router.navigate(['/book']).then(function(){
+        location.reload()
+      })
     })
   }
 }

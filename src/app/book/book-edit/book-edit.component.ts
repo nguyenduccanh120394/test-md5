@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {BookService} from '../../service/book.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-book-edit',
@@ -9,9 +11,14 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
   styleUrls: ['./book-edit.component.css']
 })
 export class BookEditComponent implements OnInit {
-  bookForm: FormGroup;
+  bookForm: FormGroup = new FormGroup({
+    title: new FormControl(),
+    author: new FormControl(),
+    description: new FormControl()
+  });
   id = 0;
-  constructor(private bookService: BookService, private router: Router, private activatedRoute: ActivatedRoute) {
+  closeResult = '';
+  constructor(private modalService: NgbModal,private bookService: BookService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((data:ParamMap) => {
       // @ts-ignore
       this.id = +data.get('id')
@@ -22,6 +29,7 @@ export class BookEditComponent implements OnInit {
 
   ngOnInit(): void {
     console.log()
+
   }
   getBook(id: number){
     return this.bookService.findById(id).subscribe(book =>{
@@ -32,6 +40,7 @@ export class BookEditComponent implements OnInit {
       })
     })
   }
+
   update(id:number){
     const book = {
       id: id,
@@ -46,5 +55,21 @@ export class BookEditComponent implements OnInit {
         location.reload()
       });
     })
+  }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return '';
+    } else {
+      return '';
+    }
   }
 }

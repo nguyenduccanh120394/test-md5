@@ -1,7 +1,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New Book</h4>
-    <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')">
+    <h4 class="modal-title" id="modal-basic-title"><img src="https://image.flaticon.com/icons/png/128/2100/2100438.png"width="55" height="55"></h4>
+    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
       <i class="fa fa-times"></i>
     </button>
   </div>
@@ -10,6 +10,7 @@
       <div class="mb-3">
         <label>Title</label>
         <input type="text" formControlName="title" class="form-control">
+        <p *ngIf="this.bookForm.controls.title.errors" class="alert-danger">This field is required</p>
       </div>
       <div class="mb-3">
         <label>Author</label>
@@ -17,14 +18,13 @@
       </div>
       <div class="mb-3">
         <label>Description</label>
-        <textarea type="text" formControlName="description" class="form-control"></textarea>
+        <textarea type="text" formControlName="description" class="form-control" style="height: 300px"></textarea>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-outline-info" (click)="modal.close('Save click')">Save</button>
+        <button [disabled]="!bookForm.valid" class="btn btn-success" (click)="modal.close('Save click')">Save</button>
       </div>
     </form>
   </div>
 </ng-template>
-<button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="open(content)"><i class="fa fa-plus-circle"></i> New Book</button>
-
+<button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" (click)="open(content)"ngbTooltip="Add Book" style="border-radius: 44px; width: 90px"><i class="fa fa-plus-circle"></i></button>
 <pre>{{ closeResult }}</pre>
